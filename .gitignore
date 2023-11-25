@@ -4,3 +4,5 @@ filtered_noumena.txt
 corpi/un_markovable_noumena.txt
 __pycache__
 .pdm-python
+filtered_ecrits.txt
+corpi/ecrits-selection.txt

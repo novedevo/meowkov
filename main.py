@@ -1,7 +1,7 @@
 import markovify
 
 # Get raw text as string.
-with open("filtered_noumena.txt") as f:
+with open("filtered_ecrits.txt") as f:
     text = f.read()
 
 # Build the model.

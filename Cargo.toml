@@ -7,7 +7,3 @@ edition = "2021"
 
 [dependencies]
 itertools = "0.12.0"
-markov = { version = "1.1.0", default_features = false, features = [
-	"itertools",
-	"markgen",
-] }

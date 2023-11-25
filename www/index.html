@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>fanged ebooks</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				text-align: center;
+				margin: 50px;
+			}
+
+			.container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			button {
+				background-color: mediumslateblue;
+				color: white;
+				border: none;
+				padding: 15px 20px;
+				font-size: 16px;
+				cursor: pointer;
+				border-radius: 5px;
+				margin-bottom: 20px;
+			}
+
+			button:hover {
+				background-color: darkslateblue;
+			}
+
+			.box-container {
+				display: flex;
+				flex-wrap: wrap;
+			}
+
+			blockquote {
+				border: 1px solid #ccc;
+				padding: 20px;
+				margin: 10px;
+				display: inline-block; /* Display boxes inline */
+				width: 300px;
+				text-align: left;
+			}
+
+			blockquote {
+				margin: 0;
+				display: inline-block;
+			}
+
+			blockquote p {
+				padding: 15px;
+				background: #eee;
+				border-radius: 5px;
+				display: inline-block;
+			}
+
+			blockquote p::before {
+				content: "\201C";
+			}
+
+			blockquote p::after {
+				content: "\201D";
+			}
+			@media (max-width: 600px) {
+				.box-container {
+					flex-direction: column; /* Stack boxes vertically on smaller screens */
+				}
+
+				blockquote {
+					width: 100%; /* Full width on smaller screens */
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<h1>fanged ebooks</h1>
+
+		<div class="container">
+			<button onclick="refreshData()">get new quotes</button>
+			<div class="box-container">
+				<blockquote>
+					<p id="land">
+						“Well I really don’t know how helpful that is!” Markov exclaims, obviously irritated.
+					</p>
+					<footer>
+						—Nick Land, <cite>Fanged Noumena <span style="display: none">(Markov chain cut-up)</span></cite>
+					</footer>
+				</blockquote>
+				<blockquote>
+					<p id="lacan">
+						It is by meditating as it were naively on the small number of steps required for syntax to
+						triumph that it is worthwhile taking the time to explore the chain ordered here along the same
+						lines as the chain that interested Poincaré and Markov.
+					</p>
+					<footer>
+						—Jacques Lacan, <cite>Écrits <span style="display: none">(Markov chain cut-up)</span></cite>
+					</footer>
+				</blockquote>
+			</div>
+		</div>
+
+		<script>
+			function refreshData() {
+				fetch("https://fang.nove.dev")
+					.then((response) => response.text())
+					.then((data) => {
+						document.getElementById("land").textContent = data.split("\n")[0];
+						document.getElementById("lacan").textContent = data.split("\n")[1];
+						for (const span of document.querySelectorAll("span")) {
+							span.style = "display:inline";
+						}
+					})
+					.catch((error) => {
+						console.error("Error fetching data:", error);
+					});
+			}
+		</script>
+	</body>
+</html>

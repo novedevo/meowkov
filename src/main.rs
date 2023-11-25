@@ -3,8 +3,10 @@ use std::{fs::File, io::Write};
 use itertools::Itertools;
 
 fn main() {
+    let r = regex::Regex::new("([,’])[0-9]+").unwrap();
     let corpus = include_str!("../corpi/fanged_noumena.txt");
-    let filtered = corpus
+    let filtered = r
+        .replace_all(corpus, "$1")
         .lines()
         .skip(453)
         .map(str::trim)

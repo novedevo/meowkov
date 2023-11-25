@@ -1,12 +1,9 @@
 [project]
-name = ""
-version = ""
-description = ""
-authors = [
-    {name = "Devon Sawatsky", email = "novedevo@gmail.com"},
-]
+name = "meowkov"
+version = "0.0.1"
+description = "meow"
+authors = [{ name = "Devon Sawatsky", email = "novedevo@gmail.com" }]
 dependencies = []
 requires-python = ">=3.11"
 readme = "README.md"
-license = {text = "MIT"}
-
+license = { text = "MIT" }

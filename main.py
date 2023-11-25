@@ -5,7 +5,7 @@ with open("filtered_ecrits.txt") as f:
     text = f.read()
 
 # Build the model.
-text_model = markovify.Text(text, state_size=2, well_formed=False)
+text_model = markovify.Text(text, state_size=2, well_formed=True)
 text_model.compile(inplace=True)
 
 # Print thousands of randomly-generated sentences
